@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapplicationapicall/data_service.dart';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
@@ -8,18 +9,31 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
+  final DataServices dataServices = DataServices();
+
   @override
   Widget build(BuildContext context) {
+    dataServices.getWeather;
     return const Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.sunny,
-            size: 30,
-            color: Colors.yellow,
-          )
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.sunny,
+              size: 30,
+              color: Colors.yellow,
+            ),
+            const Text("The date"),
+            const SizedBox(),
+            const TextField(),
+            const SizedBox(),
+            // ElevatedButton(
+            //     onPressed: () => DataServices.getWeather(""),
+            //     child: Text("Search"))
+          ],
+        ),
       ),
     );
   }
