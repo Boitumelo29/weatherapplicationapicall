@@ -20,15 +20,15 @@ class _WeatherPageState extends State<WeatherPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(
+            Icon(
               Icons.sunny,
               size: 30,
               color: Colors.yellow,
             ),
-            const Text("The date"),
-            const SizedBox(),
-            const TextField(),
-            const SizedBox(),
+            Text("The date"),
+            SizedBox(),
+            TextField(),
+            SizedBox(),
             // ElevatedButton(
             //     onPressed: () => DataServices.getWeather(""),
             //     child: Text("Search"))

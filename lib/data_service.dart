@@ -7,16 +7,16 @@ class DataServices {
 
   //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
-  getWeather() async {
-    // final query = {
-    //   'q': city,
-    // };
-
-    var uri = Uri.https('api.openweathermap.org',
-        'data/2.5/weather?q={pretoria}&appid={0f358f8ead9086a975c9b39a8e5c24ac}');
+  getWeather(String city) async {
+    final queryParameter = {
+      'q': city,
+      'appid': '8c8f8923313f68c43178b3dc5ba084a8'
+    };
+    final uri =
+        Uri.https('api.openweathermap.org', 'data/2.5/weather', queryParameter);
 
     final response = await http.get(uri);
 
-    print(response.body);
+    print("my response ${response.body}");
   }
 }
