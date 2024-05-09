@@ -10,28 +10,32 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   final DataServices dataServices = DataServices();
-
+  final TextEditingController search = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    dataServices.getWeather;
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.sunny,
               size: 30,
               color: Colors.yellow,
             ),
-            Text("The date"),
-            SizedBox(),
-            TextField(),
-            SizedBox(),
-            // ElevatedButton(
-            //     onPressed: () => DataServices.getWeather(""),
-            //     child: Text("Search"))
+            const Text("The date"),
+            const SizedBox(),
+            TextField(
+              controller: search,
+            ),
+            const SizedBox(),
+            ElevatedButton(
+                onPressed: () {
+                  dataServices.getWeather(search.text);
+                  print(search.text);
+                },
+                child: Text("Search"))
           ],
         ),
       ),
