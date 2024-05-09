@@ -1,12 +1,9 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+import 'package:weatherapplicationapicall/models.dart';
 
 class DataServices {
-// here is an example from the documantion on how to create a reponse
-//Example: var uri = Uri.https('example.org', '/path', {'q': 'dart'});
-//print(uri); // https://example.org/path?q=dart
-
-  //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-
   Future getWeather(String city) async {
     final queryParameter = {
       'q': city,
@@ -17,6 +14,15 @@ class DataServices {
 
     final response = await http.get(uri);
 
-    print("my response ${response.body}");
+    print("Weather data for city: $city");
+    print("Response body: ${response.body}");
+
+    var jsonData = jsonDecode(response.body);
+
+    final weatherData = jsonData['weather'][0];
+
+    final test = WeatherResponse(
+        description: weatherData['description'], main: weatherData['main']);
+    print(test.toString());
   }
 }

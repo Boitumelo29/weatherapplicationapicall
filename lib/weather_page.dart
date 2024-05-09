@@ -24,7 +24,7 @@ class _WeatherPageState extends State<WeatherPage> {
               size: 30,
               color: Colors.yellow,
             ),
-            const Text("The date"),
+            Text(search.toString()),
             const SizedBox(),
             TextField(
               controller: search,
