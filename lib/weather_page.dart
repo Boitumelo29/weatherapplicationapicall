@@ -10,10 +10,16 @@ class WeatherPage extends StatefulWidget {
 class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [],
+        children: [
+          Icon(
+            Icons.sunny,
+            size: 30,
+            color: Colors.yellow,
+          )
+        ],
       ),
     );
   }
