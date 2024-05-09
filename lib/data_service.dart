@@ -7,7 +7,7 @@ class DataServices {
 
   //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
-  getWeather(String city) async {
+  Future getWeather(String city) async {
     final queryParameter = {
       'q': city,
       'appid': '8c8f8923313f68c43178b3dc5ba084a8'
