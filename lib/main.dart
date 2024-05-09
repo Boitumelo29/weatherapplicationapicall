@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapplicationapicall/data_service.dart';
 import 'package:weatherapplicationapicall/weather_page.dart';
 
 void main() {
@@ -7,7 +6,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
