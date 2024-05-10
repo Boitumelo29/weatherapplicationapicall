@@ -73,5 +73,3 @@ class _WeatherPageState extends State<WeatherPage> {
 
   // Future<void> _loadWeather(String city) async {
   //   setState(() {
-  //     _isLoading = true;
-  //   });
