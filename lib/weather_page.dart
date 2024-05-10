@@ -36,15 +36,17 @@ class _WeatherPageState extends State<WeatherPage> {
             const SizedBox(),
             ElevatedButton(
                 onPressed: () {
-                  dataServices.getWeather(search.text);
+                  _loadWeather(search.text);
                   print(search.text);
                 },
                 child: Text("Search")),
             _isLoading
                 ? const CircularProgressIndicator()
                 : weatherResponse != null
-                    ? Column(children: [Text(weatherResponse!.description)])
-                    : SizedBox(),
+                    ? Text(weatherResponse!.description)
+                    : Container(
+                        color: Colors.amber,
+                      ),
           ],
         ),
       ),
@@ -63,6 +65,28 @@ class _WeatherPageState extends State<WeatherPage> {
         weatherResponse = weather;
         _isLoading = false;
       });
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 }
+
+  // Future<void> _loadWeather(String city) async {
+  //   setState(() {
+  //     _isLoading = true;
+  //   });
+  //   DataServices dataServices = DataServices();
+
+  //   try {
+  //     var weather = await dataServices.getWeather(city);
+  //     setState(() {
+  //       weatherResponse = weather;
+  //       _isLoading = false;
+  //     });
+  //   } catch (e) {
+  //     print('Failed to load weather: $e'); // Log the error
+  //     setState(() {
+  //       _isLoading = false;
+  //     });
+  //   }
+  // }
