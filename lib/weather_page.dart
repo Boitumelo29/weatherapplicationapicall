@@ -79,6 +79,3 @@ class _WeatherPageState extends State<WeatherPage> {
 
   //   try {
   //     var weather = await dataServices.getWeather(city);
-  //     setState(() {
-  //       weatherResponse = weather;
-  //       _isLoading = false;
