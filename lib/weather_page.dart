@@ -86,7 +86,7 @@ class _WeatherPageState extends State<WeatherPage> {
   //   } catch (e) {
   //     print('Failed to load weather: $e'); // Log the error
   //     setState(() {
-  //       _isLoading = false;
+ 
   //     });
   //   }
   // }
