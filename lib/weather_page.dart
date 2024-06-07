@@ -15,42 +15,50 @@ WeatherResponse? weatherResponse;
 class _WeatherPageState extends State<WeatherPage> {
   final DataServices dataServices = DataServices();
   final TextEditingController search = TextEditingController();
+
+
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.sunny,
-              size: 30,
-              color: Colors.yellow,
-            ),
-            Text(search.text),
-            const SizedBox(),
-            TextField(
-              controller: search,
-            ),
-            const SizedBox(),
-            ElevatedButton(
-                onPressed: () {
-                  _loadWeather(search.text);
-                  print(search.text);
-                },
-                child: Text("Search")),
-            _isLoading
-                ? const CircularProgressIndicator()
-                : weatherResponse != null
-                    ? Text(weatherResponse!.description)
-                    : Container(
-                        color: Colors.amber,
-                      ),
-          ],
-        ),
-      ),
-    );
+    return FutureBuilder(
+        future: future,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.sunny,
+                    size: 30,
+                    color: Colors.yellow,
+                  ),
+                  Text(search.text),
+                  const SizedBox(),
+                  TextField(
+                    controller: search,
+                  ),
+                  const SizedBox(),
+                  ElevatedButton(
+                      onPressed: () {
+                        _loadWeather(search.text);
+                        print(search.text);
+                      },
+                      child: Text("Search")),
+                  _isLoading
+                      ? const CircularProgressIndicator()
+                      : weatherResponse != null
+                          ? Text(weatherResponse!.description)
+                          : Container(
+                              color: Colors.amber,
+                            ),
+                ],
+              ),
+            );
+          }
+          return const CircularProgressIndicator();
+        });
   }
 
   Future<void> _loadWeather(String city) async {

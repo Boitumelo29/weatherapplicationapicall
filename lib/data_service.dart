@@ -37,7 +37,7 @@ class DataServices {
     final response = await http.get(uri);
     
     if(response.statusCode == 200){
-      return WeatherResponse.toJson()
+      return WeatherResponse.toJson(json.decode(response.body));
     }
 
     throw "error";
