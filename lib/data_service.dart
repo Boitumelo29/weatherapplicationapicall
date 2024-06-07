@@ -35,9 +35,15 @@ class DataServices {
         Uri.https('api.openweathermap.org', 'data/2.5/weather', queryParameter);
 
     final response = await http.get(uri);
-    
-    if(response.statusCode == 200){
+
+    if (response.statusCode == 200) {
       return WeatherResponse.toJson(json.decode(response.body));
+    }
+
+    try {
+      return WeatherResponse.toJson(json.decode(response.body));
+    } catch (e) {
+      print(e);
     }
 
     throw "error";
