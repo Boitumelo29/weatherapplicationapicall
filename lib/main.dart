@@ -10,9 +10,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    final TextEditingController search = TextEditingController();
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: WeatherPage(),),
+      home: Scaffold(
+        body: Column(
+          children: [
+            TextField(
+              controller: search,
+              decoration: const InputDecoration(
+                hintText: 'Enter city',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                WeatherPage.loadd(search.text);
+              },
+              child: const Text("Search"),
+            ),
+            WeatherPage(
+              city: search.text,
+            )
+          ],
+        ),
+      ),
     );
   }
 }
