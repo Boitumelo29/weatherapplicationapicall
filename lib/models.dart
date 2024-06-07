@@ -6,7 +6,8 @@ class WeatherResponse {
 
   factory WeatherResponse.toJson(Map<String, dynamic> json) {
     var weather = json['weather'];
-    return WeatherResponse(main: weather[''], description: weather['']);
+    return WeatherResponse(
+        main: weather['main'], description: weather['description']);
   }
 
   @override

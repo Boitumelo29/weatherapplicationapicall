@@ -25,4 +25,21 @@ class DataServices {
         description: weatherData['description'], main: weatherData['main']);
     print(test.toString());
   }
+
+  Future<WeatherResponse> getWeatherResponse(String city) async {
+    final queryParameter = {
+      'q': city,
+      'appid': '683a928354e9a6a491bf5e5e8f6cdc2d'
+    };
+    final uri =
+        Uri.https('api.openweathermap.org', 'data/2.5/weather', queryParameter);
+
+    final response = await http.get(uri);
+    
+    if(response.statusCode == 200){
+      return WeatherResponse.toJson()
+    }
+
+    throw "error";
+  }
 }
